@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurrenzBot Analytics</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <style>
+        .card {
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .stat-label {
+            font-size: 1rem;
+            color: var(--bs-secondary);
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <header class="text-center mb-5">
+            <h1>🤖 CurrenzBot Analytics Dashboard</h1>
+            <p class="lead">Monitor your bot's usage and engagement</p>
+            <p class="text-secondary">Current Month: {{ current_month }}</p>
+        </header>
+        
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-number">{{ monthly_stats.active_users }}</div>
+                    <div class="stat-label">Monthly Active Users</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-number">{{ monthly_stats.new_users }}</div>
+                    <div class="stat-label">New Users This Month</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-number">{{ monthly_stats.total_commands }}</div>
+                    <div class="stat-label">Commands Used</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-number">{{ monthly_stats.total_conversions }}</div>
+                    <div class="stat-label">Currency Conversions</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Top Commands</h5>
+                    </div>
+                    <div class="card-body">
+                        {% if top_commands %}
+                            <ul class="list-group list-group-flush">
+                                {% for command, count in top_commands %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ command }}
+                                    <span class="badge bg-primary rounded-pill">{{ count }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-center text-secondary">No command data available yet</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Popular Currency Conversions</h5>
+                    </div>
+                    <div class="card-body">
+                        {% if popular_conversions %}
+                            <ul class="list-group list-group-flush">
+                                {% for pair, count in popular_conversions %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ pair[0] }} → {{ pair[1] }}
+                                    <span class="badge bg-info rounded-pill">{{ count }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-center text-secondary">No conversion data available yet</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Bot Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Uptime:</strong> {{ uptime }}</p>
+                        <p><strong>Total Users:</strong> {{ monthly_stats.total_users }}</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                            <a href="/" class="btn btn-outline-secondary">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="text-center mt-5 mb-4">
+        <p>&copy; 2025 CurrenzBot Analytics</p>
+    </footer>
+</body>
+</html>

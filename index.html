@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurrenzBot Status</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex: 1;
+        }
+        .hero {
+            padding: 40px 0;
+            text-align: center;
+        }
+        .features {
+            margin: 30px 0;
+        }
+        .feature-card {
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            margin-top: 10px;
+        }
+        .footer {
+            margin-top: auto;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <div class="hero">
+            <h1>🤖 CurrenzBot</h1>
+            <p class="lead">Real-time currency exchange rates with a beautiful emoji interface</p>
+            <div class="d-flex justify-content-center gap-2">
+                <a href="https://t.me/CurrenzBot" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram me-1" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.014-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                    </svg>
+                    Chat with the Bot
+                </a>
+                <a href="/analytics" class="btn btn-outline-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up me-1" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
+                    </svg>
+                    View Analytics
+                </a>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">💱</div>
+                            <h5 class="card-title">Currency Conversion</h5>
+                            <p class="card-text">Convert between any supported currencies with real-time exchange rates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">🗣️</div>
+                            <h5 class="card-title">Natural Language</h5>
+                            <p class="card-text">Simply type requests like "100 USD to EUR" for instant conversions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">📊</div>
+                            <h5 class="card-title">Exchange Rates</h5>
+                            <p class="card-text">Check current exchange rates for any base currency against others.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="commands mt-5">
+            <h3 class="text-center mb-4">Available Commands</h3>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>/start</code></td>
+                            <td>Start the bot and get a welcome message</td>
+                        </tr>
+                        <tr>
+                            <td><code>/help</code></td>
+                            <td>Show help message with available commands</td>
+                        </tr>
+                        <tr>
+                            <td><code>/rates [currency]</code></td>
+                            <td>Get exchange rates for a base currency</td>
+                        </tr>
+                        <tr>
+                            <td><code>/convert</code></td>
+                            <td>Start currency conversion wizard</td>
+                        </tr>
+                        <tr>
+                            <td><code>/currencies</code></td>
+                            <td>List all supported currencies</td>
+                        </tr>
+                        <tr>
+                            <td><code>/compare [base] [targets...]</code></td>
+                            <td>Compare a base currency to others</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <footer class="mt-4">
+            <div class="text-center">
+                <p>Bot Status: <span class="badge bg-success">Online</span> | Uptime: {{ uptime }} | Last Updated: {{ last_updated }}</p>
+                <p>&copy; 2025 CurrenzBot. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // No need for the updateTime function since we're using server-side time display
+        console.log("CurrenzBot web interface loaded successfully");
+    </script>
+</body>
+</html>
