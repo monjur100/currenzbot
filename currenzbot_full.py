@@ -394,6 +394,7 @@ analytics = BotAnalytics()
 # Track the bot's start time for uptime display
 start_time = datetime.datetime.now()
 
+# Create Flask app with a name that can be imported by Gunicorn
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "currenzbot-secret-key")
 
@@ -453,15 +454,19 @@ def analytics_dashboard():
 def run_flask():
     """Run the Flask app in a separate thread."""
     logger.info("Starting Flask server for keep-alive mechanism")
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    # Get port from environment variable (for Render compatibility)
+    # Use a different port for the keep-alive server in Replit to avoid conflicts
+    # with the main application running on port 5000
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port, debug=False)
 
 def ping_server():
     """Ping the server every 5 minutes to keep it alive."""
     # Try to get Replit domain from environment, or use localhost for testing
-    host = os.environ.get("REPLIT_DOMAIN", "localhost:5000")
+    host = os.environ.get("REPLIT_DOMAIN", "localhost:8080")
     
     # Use HTTPS for Replit domain, HTTP for localhost
-    url = f"https://{host}/ping" if "replit" in host else "http://localhost:5000/ping"
+    url = f"https://{host}/ping" if "replit" in host else "http://localhost:8080/ping"
     
     logger.info(f"Keep-alive pinger will ping: {url}")
     
@@ -1099,5 +1104,10 @@ def main():
     else:
         logger.error("Failed to create bot application. Check your settings and try again.")
 
+# For Gunicorn to use in Render deployment
+# The Flask app must be available at module level
+# This ensures the Flask app can run without the bot if needed
+
+# For standalone execution, run the full bot
 if __name__ == "__main__":
     main()
